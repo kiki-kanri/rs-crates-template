@@ -2,6 +2,15 @@
 
 set -euo pipefail
 
+if ! command -v x86_64-linux-musl-gcc >/dev/null 2>&1; then
+    if command -v musl-gcc >/dev/null 2>&1; then
+        export CC_x86_64_unknown_linux_musl="${CC_x86_64_unknown_linux_musl:-musl-gcc}"
+    else
+        echo "missing x86_64-linux-musl-gcc/musl-gcc; install musl-tools with your package manager" >&2
+        exit 1
+    fi
+fi
+
 sep=$'\x1f'
 flags=(
     # Optional size/link optimization for ELF linkers that support identical code
