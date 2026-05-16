@@ -22,7 +22,7 @@ git-fetch-with-cli = true
 
 [profile.dev]
 rustflags = [
-  "--cfg", "reqwest_unstable",
+  # "--cfg", "reqwest_unstable",
   # "--cfg", "tokio_unstable",
 ]
 
@@ -30,7 +30,7 @@ rustflags = [
 rustflags = [
   "-C", "force-frame-pointers=yes",
   # "-C", "target-cpu=native",
-  "--cfg", "reqwest_unstable",
+  # "--cfg", "reqwest_unstable",
   # "--cfg", "tokio_unstable",
 ]
 
