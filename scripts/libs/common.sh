@@ -47,13 +47,21 @@ prepend_cargo_bin_to_path() {
 }
 
 require_cargo_zigbuild() {
-    require_command zig
-    require_command cargo-zigbuild
+    require_command cargo-zigbuild zig
 }
 
 require_command() {
-    if ! command -v "$1" >/dev/null 2>&1; then
-        echo "missing $1" >&2
+    local command_name
+
+    if (($# == 0)); then
+        echo 'missing command name' >&2
         exit 1
     fi
+
+    for command_name in "$@"; do
+        if ! command -v "${command_name}" >/dev/null 2>&1; then
+            echo "missing ${command_name}" >&2
+            exit 1
+        fi
+    done
 }
