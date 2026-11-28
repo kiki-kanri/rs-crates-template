@@ -55,9 +55,8 @@ workspace = true
 [features]
 default = []
 
-# Convenience aliases.
-all = []
-full = ["all"]
+# Enables every feature.
+full = []
 
 # Example:
 # serde = ["dep:serde"]
